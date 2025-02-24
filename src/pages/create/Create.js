@@ -15,7 +15,7 @@ export default function Create() {
   const [ingredients, setIngredients] = useState([]);
   const ingredientsInput = useRef(null);
 
-  const { postData, data, error } = useFetch('http://localhost:3000/recipes', 'POST');
+  const { postData, data } = useFetch('http://localhost:3000/recipes', 'POST');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -30,13 +30,9 @@ export default function Create() {
 
   useEffect(() => {
     if (data) {
-      console.log("New Recipe has been added");
-      navigate('/');
+      // navigate('/')
     }
-    if (error) {
-      console.log('Error creating recipe:'+ error);
-    }
-  }, [data, navigate, error]);
+  }, [data, navigate])
 
   const handleAddIngredient = (e) => {
       e.preventDefault();
